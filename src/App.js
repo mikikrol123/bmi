@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
 
 function App() {
+  const [waga, setWaga] = useState(0)
+  const [wzrost, setWzrost] = useState(0)
+
+  function oblicz() {
+    
+    const bmi = waga / (wzrost*wzrost) * 10000
+    console.log(bmi)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>
+    WAGA<input value={waga} onChange={e =>setWaga(e.target.value)}/>
+    <br />
+    WZROST<input value={wzrost} onChange={e =>setWzrost(e.target.value)}/>
+    <br />
+    <button onClick={oblicz}>OBLICZ</button>
+    
+    </div>
     </div>
   );
 }
