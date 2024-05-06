@@ -6,9 +6,9 @@ function App() {
   const [wzrost, setWzrost] = useState(0)
 
   function oblicz() {
-    
     const bmi = waga / (wzrost*wzrost) * 10000
-    console.log(bmi)
+    return bmi
+    
   }
   return (
     <div className="App">
@@ -18,7 +18,9 @@ function App() {
     WZROST<input value={wzrost} onChange={e =>setWzrost(e.target.value)}/>
     <br />
     <button onClick={oblicz}>OBLICZ</button>
-    
+    <div>{waga}</div>
+    <div>{wzrost}</div>
+    {oblicz()}
     </div>
     </div>
   );
