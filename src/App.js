@@ -2,14 +2,25 @@ import React, { useState } from "react";
 
 
 function App() {
-  const [waga, setWaga] = useState(0)
-  const [wzrost, setWzrost] = useState(0)
+  const [waga, setWaga] = useState(70)
+  const [wzrost, setWzrost] = useState(170)
 
-  function oblicz() {
+  function calculate() {
     const bmi = waga / (wzrost*wzrost) * 10000
-    return bmi
+    if(bmi < 18.5) {
+      return bmi + " niedowaga"
+    } else if(bmi >= 18.5 && bmi <= 24.9) {
+      return bmi + " prawidłowa waga"
+    } else if(bmi >= 25 && bmi <=29.9) {
+      return bmi + " nadwaga"
+    } 
+    
+    return bmi + " otyłość"
+    
     
   }
+  
+  const result = calculate()
   return (
     <div className="App">
       <div>
@@ -17,10 +28,10 @@ function App() {
     <br />
     WZROST<input value={wzrost} onChange={e =>setWzrost(e.target.value)}/>
     <br />
-    <button onClick={oblicz}>OBLICZ</button>
+    <button onClick={calculate}>OBLICZ</button>
     <div>{waga}</div>
     <div>{wzrost}</div>
-    {oblicz()}
+    {result}
     </div>
     </div>
   );
